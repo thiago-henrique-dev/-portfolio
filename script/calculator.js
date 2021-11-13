@@ -1,3 +1,5 @@
-let calculadroa = new CalcController()
+window.calculator = new CalcController()
+
+
 
 

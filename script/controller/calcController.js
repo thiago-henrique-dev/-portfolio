@@ -1,6 +1,7 @@
 class CalcController {
     constructor(){
-
+    
+         this._locale = "pt-BR"
          this._displayCalcEl = document.querySelector("#display");
          this._dateEl = document.querySelector("#data");
          this._timeEl = document.querySelector("#hora");
@@ -10,10 +11,22 @@ class CalcController {
     }
 
     inniitialize(){
-        
-        
 
-    }
+        let interval = setInterval(() =>{
+
+            this.displayDate = this.currentDate.toLocaleDateString(this._locale);
+            this.displayTime = this.currentDate.toLocaleTimeString(this._locale);
+
+        }, 1000);
+
+        setTimeout(() => {
+        
+            clearInterval(interval)
+
+        }, 10000);
+        
+        
+ }
 
     get displayTime(){
         return this._timeEl.innerHTML;

@@ -12,21 +12,32 @@ class CalcController {
 
     inniitialize(){
 
-        let interval = setInterval(() =>{
+        this.displayDate = this.currentDate.toLocaleDateString(this._locale);
+        this.displayTime = this.currentDate.toLocaleTimeString(this._locale)
 
-            this.displayDate = this.currentDate.toLocaleDateString(this._locale);
+       setInterval(() =>{
+
+            this.displayDate = this.currentDate.toLocaleDateString(this._locale,{
+                day: "2-digit",
+                month: "long",
+                year: "numeric"
+            });
             this.displayTime = this.currentDate.toLocaleTimeString(this._locale);
 
         }, 1000);
 
-        setTimeout(() => {
-        
-            clearInterval(interval)
+    }
 
-        }, 10000);
+        initButtonEvents(){
+            document.querySelectorAll("#buttons > g, #parts > g")
+        }
         
-        
- }
+
+        setDisplayTime(){
+            
+            this.displayDate = this.currentDate.toLocaleDateString(this._locale);
+            this.displayTime = this.currentDate.toLocaleTimeString(this._locale)
+        }
 
     get displayTime(){
         return this._timeEl.innerHTML;

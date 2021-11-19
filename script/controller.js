@@ -37,7 +37,7 @@ class CalcController {
 
     clearAll(){
 
-        this._operation = [];
+        this._operation = []
 
     }
 

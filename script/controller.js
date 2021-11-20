@@ -2,7 +2,7 @@ class CalcController {
 
     constructor(){
 
-        this._operation = [];
+        this._operation = []
         this._locale = 'pt-BR';
         this._displayCalcEl = document.querySelector("#display");
         this._dateEl = document.querySelector("#data");
@@ -37,7 +37,7 @@ class CalcController {
 
     clearAll(){
 
-        this._operation = []
+        this._operation = []    
 
     }
 

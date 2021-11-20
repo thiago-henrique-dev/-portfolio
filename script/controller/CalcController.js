@@ -9,6 +9,7 @@
 
         this._currentDate;
         this.initialize();
+        this.initButtonsEvents();
     }
 
         
@@ -24,6 +25,20 @@
 
         
         }
+
+        initButtonsEvents(){
+            // Adicionando Evento Click
+            let buttons = document.querySelectorAll("#buttons > g, #parts > g");
+
+            buttons.forEach(btn=>{
+
+                btn.addEventListener('click', e =>{
+                    console.log(btn.className.baseVal.replace("btn-",""));
+                })
+            })
+        }
+
+        
 
         setDisplayDateTime(){
 

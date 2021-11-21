@@ -2,6 +2,7 @@
 
         constructor(){
         
+        this._operation = []
         this._locale = ("pt-BR")
         this._displayCalcEl = document.querySelector("#display");
         this._dataEl = document.querySelector("#data");
@@ -26,14 +27,86 @@
         
         }
 
+        clearAll(){
+
+            this._operation = [];
+
+        }
+
+        clearEntry(){
+
+            this._operatio.pop();
+        }
+
+        addOperation(value){
+            this._operation.push(value);
+            console.log(this._operation)
+        }
+
+
+        setError(){
+            this.displayCalc = "Error";
+        }
+
+        execBtn(value){
+
+            switch(value) {
+
+                case "ac":
+                    this.clearAll();
+                    break;
+                case "ce":
+                    this.clearEntry();
+                    break;
+                case "soma":
+                    break;
+                case "subtração":
+                    break;
+                case "multiplicação":
+                    break;
+                case "divisão":
+                    break;
+                case "porcentagem":
+                    break;
+                case "igual":
+                    break;
+
+                case '0':
+                case '1':
+                case '2':
+                case '3':
+                case '4':
+                case '5':
+                case '6':
+                case '7':
+                case '8':
+                case '9':
+                    this.addOperation(parseInt(value))
+                    break;
+                default:
+                    this.setError();
+                    break;
+
+                
+
+                
+            }
+
+        }
+
         initButtonsEvents(){
             // Adicionando Evento Click
             let buttons = document.querySelectorAll("#buttons > g, #parts > g");
 
             buttons.forEach(btn=>{
 
-                btn.addEventListener('click', e =>{
-                    console.log(btn.className.baseVal.replace("btn-",""));
+                btn.addEventListener('click', e  =>{
+
+
+                    let textBtn = btn.className.baseVal.replace("btn-","");
+                    console.log(textBtn)
+
+                    this.execBtn(textBtn)
                 })
             })
         }

@@ -35,11 +35,54 @@
 
         clearEntry(){
 
-            this._operatio.pop();
+            this._operation.pop();
+
         }
 
+        getLastOperation(){
+
+            return this._operation[this._operation.length-1]
+
+        }
+
+        setLastOperation(value){
+
+            this._operation[this._operation.length-1] = value;
+
+        }
+
+        isOperator(value){
+
+          return (['+','-',"*","%", "/"].indexOf(value) > -1)
+
+        }
+
+
         addOperation(value){
-            this._operation.push(value);
+
+            if(isNaN(this.getLastOperation())){
+
+                if (this.isOperator(value)){
+
+                    this._operation[this._operation.length - 1] = value;
+
+                } else if(isNaN(value)) {
+
+                    console.log(value);
+
+                } else {
+
+                    this._operation.push(value);
+                    
+                }
+
+            } else {
+                let newValue = this.getLastOperation().toString() + value.toString();
+                this.setLastOperation(parseInt(newValue));
+            }
+
+
+            
             console.log(this._operation)
         }
 
@@ -59,18 +102,26 @@
                     this.clearEntry();
                     break;
                 case "soma":
+                    this.addOperation("+")
                     break;
                 case "subtração":
+                    this.addOperation("-")
                     break;
                 case "multiplicação":
+                    this.addOperation("*")
                     break;
                 case "divisão":
+                    this.addOperation("/")
                     break;
                 case "porcentagem":
+                    this.addOperation("%")
                     break;
                 case "igual":
+                    this.addOperation
                     break;
-
+                case "ponto":
+                    this.addOperation(".")
+                    break;
                 case '0':
                 case '1':
                 case '2':
